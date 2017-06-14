@@ -7,10 +7,12 @@ type Endereco struct {
 	Rua string `json:"rua"`
 }
 
+// Mock de endereco
 var endereco = &Endereco{
 	Rua: "Avenida Brasil",
 }
 
+// Definindo enderecoType, referenciado a estrutura completa no graphql
 var enderecoType = graphql.NewObject(graphql.ObjectConfig{
 	Name: "Endereco",
 	Fields: graphql.Fields{
@@ -21,11 +23,13 @@ var enderecoType = graphql.NewObject(graphql.ObjectConfig{
 })
 
 // GetQueryType function
+// Retorna o enderecoType para ser usado na main queryType
 func (u Endereco) GetQueryType() *graphql.Object {
 	return enderecoType
 }
 
 // GetEndereco getter
+// Retorna a estrutura endereco
 func (u Endereco) GetEndereco() *Endereco {
 	return endereco
 }

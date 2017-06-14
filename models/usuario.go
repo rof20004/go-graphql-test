@@ -9,6 +9,7 @@ type Usuario struct {
 	Endereco
 }
 
+// Mock de usuario
 var usuario = &Usuario{
 	Nome:  "Rodolfo Azevedo",
 	Idade: 33,
@@ -17,6 +18,7 @@ var usuario = &Usuario{
 	},
 }
 
+// Definindo usuarioType, referenciado a estrutura completa no graphql
 var usuarioType = graphql.NewObject(graphql.ObjectConfig{
 	Name: "Usuario",
 	Fields: graphql.Fields{
@@ -36,11 +38,13 @@ var usuarioType = graphql.NewObject(graphql.ObjectConfig{
 })
 
 // GetQueryType function
+// Retorna o usuarioType para ser usado na main queryType
 func (u Usuario) GetQueryType() *graphql.Object {
 	return usuarioType
 }
 
 // GetUsuario getter
+// Retorna a estrutura usuario
 func (u Usuario) GetUsuario() *Usuario {
 	return usuario
 }

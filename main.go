@@ -11,6 +11,7 @@ import (
 var usuario models.Usuario
 var endereco models.Endereco
 
+// Main query, to get all queries types
 var queryType = graphql.NewObject(graphql.ObjectConfig{
 	Name: "Query",
 	Fields: graphql.Fields{
