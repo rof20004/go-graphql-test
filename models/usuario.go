@@ -4,6 +4,7 @@ import "github.com/graphql-go/graphql"
 
 // Usuario struct
 type Usuario struct {
+	ID    int    `json:"id"`
 	Nome  string `json:"nome"`
 	Idade int    `json:"idade"`
 	Endereco
@@ -11,6 +12,7 @@ type Usuario struct {
 
 // Mock de usuario
 var usuario = &Usuario{
+	ID:    1,
 	Nome:  "Rodolfo Azevedo",
 	Idade: 33,
 	Endereco: Endereco{

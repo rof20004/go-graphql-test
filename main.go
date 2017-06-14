@@ -17,8 +17,19 @@ var queryType = graphql.NewObject(graphql.ObjectConfig{
 	Fields: graphql.Fields{
 		"usuario": &graphql.Field{
 			Type: usuario.GetQueryType(),
+			Args: graphql.FieldConfigArgument{
+				"id": &graphql.ArgumentConfig{
+					Type: graphql.Int,
+				},
+			},
 			Resolve: func(p graphql.ResolveParams) (interface{}, error) {
-				return usuario.GetUsuario(), nil
+				id, isOK := p.Args["id"].(int)
+				if isOK {
+					if id == 1 {
+						return usuario.GetUsuario(), nil
+					}
+				}
+				return nil, nil
 			},
 		},
 		"endereco": &graphql.Field{
